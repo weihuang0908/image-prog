@@ -2,11 +2,14 @@ import Image
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-from api.polt import Polt
-from api.hazeRemove import HazeRemove
+from core.api.polt import Polt
+from core.api.hazeRemove import HazeRemove
+from test.test import TestCase
+import sys
 
-currentDir="/Users/weihuang/Projects/image-prog/images/mai"
-outputDir="/Users/weihuang/Projects/image-prog/images/output/tResearch"
+tc=TestCase()
+currentDir="/Users/weihuang/Projects/image-prog/res/images/tResearch"
+outputDir="/Users/weihuang/Projects/image-prog/res/images/output/tResearch"
 maiList=os.listdir(currentDir)
 
 def test_haze_remove():
@@ -17,9 +20,9 @@ def test_haze_remove():
 			print f
 			filePath=os.path.join(currentDir,im)
 			hr=HazeRemove()
-			hr.get_s_image(filePath).save(f+"_s.jpg")
+			# hr.get_s_image(filePath).save(f+"_s.jpg")
 			# hr.get_dark_channel_image(filePath).save(f+"_dark_channel.jpg")
-			# hr.get_t_image(filePath).save(f+"_t3.jpg")
+			hr.get_t_image(filePath).save(f+"_t3.jpg")
 			# hr.haze_remove(filePath).save(f+"_haze_remove.jpg")
 
 def test_polt():
@@ -36,10 +39,11 @@ def main():
 	# test_polt()
 	test_haze_remove()
 if __name__ == '__main__':
-	 # main()
-
-	hr=HazeRemove()
-	# filePath=currentDir+"/P1150672.JPG"
-	# hr.get_s_image(filePath)
-	filePath=currentDir+"/p4.JPG"
-	hr.haze_remove(filePath,False)
+	# main()
+	tc.test()
+	# hr=HazeRemove()
+	# # filePath=currentDir+"/P1150672.JPG"
+	# # hr.get_s_image(filePath)
+	# filePath=currentDir+"/p4.JPG"
+	# hr.haze_remove(filePath,resize=False)
+	# hr.get_t_image(filePath)
