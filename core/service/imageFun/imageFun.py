@@ -2,6 +2,8 @@ import Image
 import numpy as np
 import os
 
+
+
 class ImageFun(object):
 
 	def __init__(self):
@@ -15,6 +17,7 @@ class ImageFun(object):
 	"""
 		transform specifc imamge to int16 matrix
 	"""
+
 	def loadImage(self,filePath,resize=True):
 		im = Image.open(filePath)
 		print resize
